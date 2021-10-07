@@ -9,6 +9,7 @@ from nltk.tokenize import word_tokenize
 from word2number import w2n
 
 nltk.download('stopwords')
+nltk.download('punkt')
 stemmer = SnowballStemmer("english")
 SW = set(stopwords.words('english'))
 

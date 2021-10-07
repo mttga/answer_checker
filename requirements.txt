@@ -1,0 +1,5 @@
+streamlit==1.0.0
+gspread==4.0.1
+nltk==3.6.2
+word2number==1.1
+oauth2client==4.1.3

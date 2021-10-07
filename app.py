@@ -9,11 +9,12 @@ scope = ['https://spreadsheets.google.com/feeds','https://www.googleapis.com/aut
 creds = ServiceAccountCredentials.from_json_keyfile_dict(st.secrets["gcp_service_account"], scope)
 
 @st.cache(allow_output_mutation=True)
-def get_sheet():
+def get_client():
     client = gspread.authorize(creds)
-    return client.open('answerchecker_proto').get_worksheet(0)
+    return client
 
-sheet = get_sheet()
+client = get_client()
+sheet = client.open('answerchecker_proto').get_worksheet(0)
 ss = SessionState.get(name="", button_sent=False)  # to cache the check button
 
 ### EVALUATE THE RIGHT AND USER ANSWERS

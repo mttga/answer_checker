@@ -13,6 +13,7 @@ from nltk.corpus import words
 # Ensure all the resources are available
 nltk.download('stopwords')
 nltk.download('punkt')
+nltk.download('words')
 lemmatizer = WordNetLemmatizer()
 SW = set(stopwords.words('english')) #english stopwords
 EW = set(words.words()) # english word

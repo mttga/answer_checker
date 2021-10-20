@@ -14,6 +14,7 @@ from nltk.corpus import words
 nltk.download('stopwords')
 nltk.download('punkt')
 nltk.download('words')
+nltk.download('wordnet')
 lemmatizer = WordNetLemmatizer()
 SW = set(stopwords.words('english')) #english stopwords
 EW = set(words.words()) # english word

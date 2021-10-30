@@ -1,5 +1,6 @@
 import re
 import json
+import pandas as pd
 from typing import List
 
 import nltk
@@ -20,6 +21,7 @@ SW = set(stopwords.words('english')) #english stopwords
 EW = set(words.words()) # english word
 with open('am2br.json', 'r') as file: #american to britush dictionary
     am2br = json.load(file)
+case_memory = pd.read_csv('case_memory.csv')
 
 
 class Comparison:
@@ -34,12 +36,19 @@ class Comparison:
     """
     
     def __init__(self, right_answer: str, user_answer: str):
-        
-        # preprocess right and user answer
-        self.r_answer = self._preprocess_string(right_answer)
-        self.u_answer  = self._preprocess_string(user_answer)
-        self.r_lemmas = set([lemmatizer.lemmatize(w) for w in word_tokenize(self.r_answer) if lemmatizer.lemmatize(w) in EW])
-        self.u_lemmas = set([lemmatizer.lemmatize(w) for w in word_tokenize(self.u_answer) if lemmatizer.lemmatize(w) in EW])
+
+
+        #check in memory for equal cases
+        memory_result = self._check_memory(right_answer, user_answer)
+        if memory_result:
+            self.result = memory_result
+        else: 
+            # preprocess right and user answer
+            self.r_answer = self._preprocess_string(right_answer)
+            self.u_answer = self._preprocess_string(user_answer)
+            self.r_lemmas = set([lemmatizer.lemmatize(w) for w in word_tokenize(self.r_answer) if lemmatizer.lemmatize(w) in EW])
+            self.u_lemmas = set([lemmatizer.lemmatize(w) for w in word_tokenize(self.u_answer) if lemmatizer.lemmatize(w) in EW])
+            self.result   = self._compare()
         
     def _preprocess_string(self, s: str) -> str:
         """
@@ -74,14 +83,29 @@ class Comparison:
             return True
         else:
             return False
+
+    def _check_memory(self, r_a:str, u_a:str):
+        result = case_memory.loc[((case_memory['right_answer'] == r_a) & (case_memory['user_answer'] == u_a)) | 
+                            ((case_memory['right_answer'] == u_a) & (case_memory['user_answer'] == r_a))]['output']  
+        if result.any():
+            return result.mode()[0] # return the most frequent item if there is a multiple match
+        else:
+            return None # return None if there is no match
         
-    def get_result(self) -> str:
+    def _compare(self) -> str:
         """
         Returns Right or Wrong depending on the comparison done
         """
-        print(self.r_answer, self.u_answer,edit_distance(self.r_answer, self.u_answer))
-        if edit_distance(self.r_answer, self.u_answer) <= 3:
-            print(self.r_lemmas, self.u_lemmas)
-            if self._check_lemmas():
-                return 'Right'           
-        return 'Wrong'
+        memory_result = self._check_memory(self.r_answer, self.u_answer)
+        if memory_result:
+            return memory_result
+        else:
+            print(self.r_answer, self.u_answer,edit_distance(self.r_answer, self.u_answer))
+            if edit_distance(self.r_answer, self.u_answer) <= 3:
+                print(self.r_lemmas, self.u_lemmas)
+                if self._check_lemmas():
+                    return 'Right'           
+            return 'Wrong'
+
+    def get_result(self) -> str:
+        return self.result

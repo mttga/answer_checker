@@ -1,0 +1,126 @@
+right_answer,user_answer,output
+ulceration,ulcering,Right
+outbreak,out brake,Right
+non-healing,no healing,Right
+painless,pain free,Right
+fever,fewer,Wrong
+swelling,swollen,Right
+temperature,temp.,Right
+bacteria,bacterium,Right
+contracted,contacted,Wrong
+organ,origon,Wrong
+examination,exam,Right
+january,jan,Right
+february ,feb,Right
+march ,mar,Right
+intraocular,intra ocular,Right
+shortness of breath,sob,Right
+shortness of breath,short of breath,Right
+severity,severe,Right
+paranoia,paranoid,Right
+aggression,aggressive,Right
+numbness,numb,Right
+abrasion,abrasive,Right
+relapse,re lapse,Right
+gynecologist,gyne,Right
+opthalmologist,eye specialist,Right
+surgical,surgery,Right
+examination,exam,Right
+brain,brian,Wrong
+controlling,control,Right
+lactation,lactate,Right
+excessive,excess,Right
+toward,towards,Right
+within ,with in ,Right
+without,with out,Right
+middle,mid,Right
+backward,backwards,Right
+bronchoscopy,bronco scopy,Right
+digestive,digestion,Right
+antibodies,anti body,Right
+internet,intranet,Wrong
+appetite,apatite,Right
+between,bitween,Right
+beginning,begin,Right
+asphasia,asphagia,Wrong
+blood pressure,bp,Right
+oxygen,o2,Right
+skeletal,skeleton,Right
+reproductive,reproduction,Right
+abdominal,abdomen,Right
+pelvis,pelvic,Right
+electrocardiogram,ecc,Right
+electrocardiogram,ekg,Right
+exterior,ext,Right
+diagnosis,dx,Right
+twice a day,b.i.d,Right
+bowel movement,bm,Right
+biopsy,bx,Right
+cardiac arrest,ca,Right
+catheter,cath,Right
+chief complaint,cc,Right
+central nervous system,cns,Right
+chronic obstructive pulmonary disease,copd,Right
+cardiopulmonary resuscitation,cpr,Right
+cardiovascular,cv,Right
+gall bladder,gb,Right
+discharge,dc,Right
+emergency department,ed,Right
+"ear, nose, throat",ent,Right
+ear nose throat,ent,Right
+family history,fh,Right
+follow-up,f/u,Right
+follow up,f/u,Right
+fracture,fx,Right
+hemoglobin,hb,Right
+general practitioner,gp,Right
+general practitioner,doctor,Right
+general practitioner,physician,Right
+hypertension,htn,Right
+intensive care unit,icu,Right
+intravenous,intravenously,Right
+intravenously,intravenous,Right
+intravenously,iv,Right
+intravenous,iv,Right
+laboratory,lab,Right
+maximum,max,Right
+medicine,med,Right
+medicine,med.,Right
+motor vehicle accident,mva,Right
+no apparent distress,nad,Right
+obstetrics,ob,Right
+obstetrics,obg,Right
+operation,op.,Right
+observation,obs,Right
+palpate,palp.,Right
+pathology,path,Right
+physical exam,pe,Right
+pharmacy,pneu.,Right
+positive,pos.,Right
+psychiatry,psych.,Right
+every hour,q.h.,Right
+four times a day,q.i.d.,Right
+"rheumatoid arthritis,",ra,Right
+sudden infant death syndrome,sids,Right
+skeletal,skel.,Right
+shortness of breath,sob,Right
+sexually transmitted disease,std,Right
+subcutaneous,subcut.,Right
+symptoms,sx ,Right
+information,info,Right
+haemorrhages,hemorage,Right
+5-year-old,5 years old,Right
+stooped,stopped,Wrong
+asleep,sleep,Right
+spasm,spam,Wrong
+sound,ound,Wrong
+abnormal,bnormal,Wrong
+tumor,umor,Wrong
+tumor,rumor,Wrong
+speech,peech,Wrong
+shortness of breath,short of breath,Right
+activities of daily living ,adl's,Right
+approximately,approx.,Right
+capsule,caps,Right
+continue,cont.,Right
+kilogram,kg,Right

@@ -37,7 +37,6 @@ class Comparison:
     
     def __init__(self, right_answer: str, user_answer: str):
 
-
         #check in memory for equal cases
         memory_result = self._check_memory(right_answer, user_answer)
         if memory_result:
@@ -66,12 +65,12 @@ class Comparison:
         if w in am2br.keys(): 
             w = am2br[w] # convert american to british
         try: 
-            w = num2words(w) # Transform '2' to 'tho', '41' to 'forty-one', etc.
+            w = num2words(w) # Transform '2' to 'two', '41' to 'forty-one', etc.
         except:
             pass
         return w.lower() 
     
-    def _check_lemmas(self, thresehold=0.5) -> bool:
+    def _check_lemmas(self, thresehold=0.8) -> bool:
         """
         Check if the lemmas of the user answer present in the right answer
         are above a certain threshold
@@ -79,7 +78,7 @@ class Comparison:
         if len(self.r_lemmas)!=len(self.u_lemmas) or len(self.r_lemmas)+len(self.u_lemmas)==0:
             return True
         jaccard_similarity = 1-jaccard_distance(self.r_lemmas, self.u_lemmas)
-        if jaccard_similarity > 0.8:
+        if jaccard_similarity > thresehold:
             return True
         else:
             return False
@@ -96,13 +95,12 @@ class Comparison:
         """
         Returns Right or Wrong depending on the comparison done
         """
+        # check again in memory after the preprocessing
         memory_result = self._check_memory(self.r_answer, self.u_answer)
         if memory_result:
             return memory_result
         else:
-            print(self.r_answer, self.u_answer,edit_distance(self.r_answer, self.u_answer))
             if edit_distance(self.r_answer, self.u_answer) <= 3:
-                print(self.r_lemmas, self.u_lemmas)
                 if self._check_lemmas():
                     return 'Right'           
             return 'Wrong'
